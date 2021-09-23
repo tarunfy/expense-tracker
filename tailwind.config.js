@@ -8,12 +8,15 @@ module.exports = {
       },
       height: {
         hero: "600px",
+        blob: "700px",
       },
       width: {
         hero: "600px",
       },
       textColor: {
         primary: "#5928E5",
+        secondary: "#00CDFF",
+        tertiary: "#0099FF",
       },
       backgroundColor: (theme) => ({
         ...theme("colors"),
