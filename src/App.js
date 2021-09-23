@@ -1,12 +1,7 @@
 function App() {
   return (
     <div>
-      <h1
-        className="text-center text-2xl text-blue-500
-      "
-      >
-        Expenseeeeeeeeee
-      </h1>
+      <h1>Hello</h1>
     </div>
   );
 }
