@@ -1,7 +1,10 @@
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
 function App() {
   return (
-    <div>
-      <h1>Hello</h1>
+    <div className="max-w-full max-h-full flex flex-col">
+      <Navbar />
+      <Home />
     </div>
   );
 }
