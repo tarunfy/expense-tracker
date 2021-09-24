@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logInAction } from "../actionCreators/authActions";
 import { useHistory } from "react-router";
+
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("tarunsharma8920@gmail.com");
+  const [password, setPassword] = useState("passwor0.");
   const dispatch = useDispatch();
   const error = useSelector((state) => state.logInError);
   const history = useHistory();

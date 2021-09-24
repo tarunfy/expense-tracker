@@ -1,5 +1,5 @@
 const initState = {
-  user: {},
+  user: null,
   signUpError: null,
   logInError: null,
 };
@@ -8,6 +8,8 @@ export const authReducer = (state = initState, action) => {
   switch (action.type) {
     case "SIGN_UP":
       return { ...state, user: action.res.user, signUpError: null };
+    case "SET_USER":
+      return { ...state, user: action.payload };
     case "SIGN_UP_ERROR":
       return { ...state, signUpError: action.err.message };
     case "LOG_IN":

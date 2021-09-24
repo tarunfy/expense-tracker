@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import hero from "../imgs/hero.svg";
 import { Link } from "react-router-dom";
-
+import { auth } from "../config/firebaseConfig";
 function Home() {
   return (
     <>
@@ -25,8 +25,8 @@ function Home() {
             Your personal expense manager designed to help
             <br /> you keep track of your day-to-day expense and income.
           </p>
-          <Link to="/signup">
-            <div className="get-started-btn">Get Started</div>
+          <Link to="/signup" className="get-started-btn">
+            <div>Get Started</div>
           </Link>
         </div>
         <img src={hero} alt="hero" className="h-hero w-hero" />
