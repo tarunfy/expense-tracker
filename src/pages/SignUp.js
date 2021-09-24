@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { signUpAction } from "../actionCreators/signUpAction";
+import { useHistory } from "react-router";
 
 function SignUp() {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const error = useSelector((state) => state.signUpError);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(signUpAction({ email, password }));
+    setEmail("");
+    setUsername("");
+    setPassword("");
+    if (!error) {
+      history.push("/dashboard");
+    }
+  };
+
   return (
     <div className="container flex flex-col justify-center h-hero  mx-auto items-center">
       <h1 className="font-Roboto font-semibold text-center text-gray-600 text-9xl mb-6">
         Create your account
       </h1>
       <div className="bg-white w-96 pt-10 pb-8 px-10 shadow-2xl rounded-lg">
-        <form className="mb-0 space-y-6">
+        <form className="mb-0 space-y-6" onSubmit={handleSubmit}>
           <div>
             <div className="mb-2">
               <label
@@ -18,6 +38,8 @@ function SignUp() {
               </label>
               <div className="mt-1">
                 <input
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   type="text"
                   id="username"
                   required
@@ -34,6 +56,8 @@ function SignUp() {
               </label>
               <div className="mt-1">
                 <input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   type="email"
                   id="email"
                   required
@@ -49,6 +73,8 @@ function SignUp() {
             </label>
             <div className="mt-1">
               <input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 id="password"
                 required
