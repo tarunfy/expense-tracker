@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { signUpAction } from "../actionCreators/signUpAction";
+import { signUpAction } from "../actionCreators/authActions";
 import { useHistory } from "react-router";
 
 function SignUp() {

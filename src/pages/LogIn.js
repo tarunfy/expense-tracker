@@ -1,13 +1,30 @@
 import React, { useState } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
+import { logInAction } from "../actionCreators/authActions";
+import { useHistory } from "react-router";
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const error = useSelector((state) => state.logInError);
+  const history = useHistory();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(logInAction({ email, password }));
+    setEmail("");
+    setPassword("");
+    if (!error) {
+      history.push("/dashboard");
+    }
+  };
+
   return (
     <div className="container flex flex-col justify-center h-hero  mx-auto items-center">
       <h1 className="font-Roboto font-semibold text-center text-gray-600 text-9xl mb-6">
         Welcome Back
       </h1>
       <div className="bg-white w-96 pt-10 pb-8 px-10 shadow-2xl rounded-lg">
-        <form className="mb-0 space-y-6">
+        <form className="mb-0 space-y-6" onSubmit={handleSubmit}>
           <div>
             <div className="mb-2">
               <label
@@ -18,6 +35,8 @@ function Login() {
               </label>
               <div className="mt-1">
                 <input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   type="email"
                   id="email"
                   required
@@ -33,6 +52,8 @@ function Login() {
             </label>
             <div className="mt-1">
               <input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 id="password"
                 required
