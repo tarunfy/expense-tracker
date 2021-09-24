@@ -1,9 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
-
+import { Redirect } from "react-router-dom";
 function Dashboard() {
-  const state = useSelector((state) => state);
-  console.log(state);
+  const user = useSelector((state) => state.user);
+  const isFetching = useSelector((state) => state.isFetching);
+
+  if (isFetching) return <h1>Loading...</h1>;
+  if (user == null) return <Redirect to="/" />;
+
   return <div className="text-center text-5xl">Dashboard</div>;
 }
 

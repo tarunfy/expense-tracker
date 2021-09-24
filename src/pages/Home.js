@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import hero from "../imgs/hero.svg";
 import { Link } from "react-router-dom";
-import { auth } from "../config/firebaseConfig";
+
 function Home() {
   return (
     <>

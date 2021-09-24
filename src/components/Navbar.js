@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { auth } from "../config/firebaseConfig";
@@ -13,7 +13,6 @@ function Navbar() {
 
   const handleLogout = () => {
     auth.signOut();
-    console.log(user);
     history.push("/");
   };
 

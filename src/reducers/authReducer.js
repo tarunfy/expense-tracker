@@ -1,5 +1,6 @@
 const initState = {
   user: null,
+  isFetching: true,
   signUpError: null,
   logInError: null,
 };
@@ -9,7 +10,7 @@ export const authReducer = (state = initState, action) => {
     case "SIGN_UP":
       return { ...state, user: action.res.user, signUpError: null };
     case "SET_USER":
-      return { ...state, user: action.payload };
+      return { ...state, user: action.payload, isFetching: false };
     case "SIGN_UP_ERROR":
       return { ...state, signUpError: action.err.message };
     case "LOG_IN":

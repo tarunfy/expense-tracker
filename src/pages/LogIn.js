@@ -1,23 +1,29 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logInAction } from "../actionCreators/authActions";
-import { useHistory } from "react-router";
+import { useHistory, Redirect } from "react-router";
 
 function Login() {
   const [email, setEmail] = useState("tarunsharma8920@gmail.com");
   const [password, setPassword] = useState("passwor0.");
   const dispatch = useDispatch();
-  const error = useSelector((state) => state.logInError);
-  const history = useHistory();
+  const user = useSelector((state) => state.user);
+  const isFetching = useSelector((state) => state.isFetching);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(logInAction({ email, password }));
     setEmail("");
     setPassword("");
-    if (!error) {
-      history.push("/dashboard");
-    }
   };
+
+  if (isFetching) {
+    return <div>Loading...</div>;
+  }
+
+  if (user) {
+    return <Redirect to="/dashboard"></Redirect>;
+  }
 
   return (
     <div className="container flex flex-col justify-center h-hero  mx-auto items-center">
