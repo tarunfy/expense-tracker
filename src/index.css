@@ -4,5 +4,5 @@
 @tailwind utilities;
 
 .get-started-btn {
-  @apply mt-10 flex justify-center w-36 cursor-pointer border-0 rounded-lg bg-primary font-bold text-white px-4 py-3 transition-shadow duration-300 ease-in hover:shadow-primary;
+  @apply mt-10 flex justify-center w-36 border-0 rounded-lg bg-primary font-bold text-white px-4 py-3 transition-shadow duration-300 ease-in hover:shadow-primary;
 }
