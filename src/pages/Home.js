@@ -25,7 +25,7 @@ function Home() {
             Your personal expense manager designed to help
             <br /> you keep track of your day-to-day expense and income.
           </p>
-          <Link to="/signin">
+          <Link to="/signup">
             <div className="get-started-btn">Get Started</div>
           </Link>
         </div>
