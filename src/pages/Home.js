@@ -21,7 +21,7 @@ function Home() {
           <h1 className="uppercase font-bold text-9xl mb-2 text-tertiary">
             XPE<span className="text-primary">NSE</span>
           </h1>
-          <p className="font-semibold text-4xl text-gray-900  ">
+          <p className="font-semibold text-4xl text-gray-600  ">
             Your personal expense manager designed to help
             <br /> you keep track of your day-to-day expense and income.
           </p>
