@@ -1,20 +1,20 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import Card from "../components/Card";
+
 function Dashboard() {
   const user = useSelector((state) => state.user);
   const isFetching = useSelector((state) => state.isFetching);
-  const state = useSelector((state) => state);
-  console.log(state);
 
   if (isFetching) return <h1>Loading...</h1>;
   if (user == null) return <Redirect to="/" />;
 
   return (
-    <div className="container py-10  max-h-screen bg-gray-50 max-w-full  grid grid-cols-3">
+    <div className="container  my-10 px-6 max-h-screen  max-w-full  grid grid-cols-3">
       <div
         id="left"
-        className="container flex flex-col justify-between items-center"
+        className="container flex w-full flex-col justify-between items-center"
       >
         <div
           id="info"
@@ -23,11 +23,11 @@ function Dashboard() {
           <div className="flex justify-between w-full items-center mb-10 ">
             <div className="flex flex-col justify-center items-center">
               <h1 className="font-semibold text-2xl uppercase">Income</h1>
-              <p className="text-green-400">5000</p>
+              <p className="text-green-500 font-medium">₹5000</p>
             </div>
             <div className="flex flex-col justify-center items-center">
               <h1 className="font-semibold text-2xl uppercase">Expense</h1>
-              <p className="text-red-400">4000</p>
+              <p className="text-red-500 font-medium">₹4000</p>
             </div>
           </div>
           <div>
@@ -89,7 +89,32 @@ function Dashboard() {
           </form>
         </div>
       </div>
-      <div id="right" className="col-span-2"></div>
+      <div
+        id="right"
+        className="col-span-2 container bg-white flex flex-col justify-start py-10  px-10 shadow-md  items-stretch w-full"
+      >
+        <div>
+          <h1 className="font-Roboto font-bold text-3xl mb-2">History</h1>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </div>
+      </div>
     </div>
   );
 }
