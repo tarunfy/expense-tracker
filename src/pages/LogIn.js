@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logInAction } from "../actionCreators/authActions";
-import { useHistory, Redirect } from "react-router";
+import { Redirect } from "react-router";
 
 function Login() {
   const [email, setEmail] = useState("tarunsharma8920@gmail.com");

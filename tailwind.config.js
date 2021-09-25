@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         Roboto: ["Roboto"],
+        Nunito: ["Nunito"],
       },
       height: {
         hero: "600px",
@@ -21,6 +22,7 @@ module.exports = {
       backgroundColor: (theme) => ({
         ...theme("colors"),
         primary: "#5928E5",
+        dashboard: "",
       }),
       boxShadow: {
         primary: "rgba(0, 0, 0, 0.35) 0px 5px 15px",

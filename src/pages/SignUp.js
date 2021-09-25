@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signUpAction } from "../actionCreators/authActions";
-//import { useLocation } from "react-router";
 
 function SignUp({ history }) {
   const dispatch = useDispatch();

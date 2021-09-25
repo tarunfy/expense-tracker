@@ -9,12 +9,11 @@ const initState = {
 export const authReducer = (state = initState, action) => {
   switch (action.type) {
     case "SIGN_UP":
-      console.log(action.res);
-    //return {
-    //  ...state,
-    //  user: action.res.user,
-    //  signUpError: null,
-    //};
+      return {
+        ...state,
+        user: action.res.user,
+        signUpError: null,
+      };
     case "SET_USER":
       return { ...state, user: action.payload, isFetching: false };
     case "SIGN_UP_ERROR":

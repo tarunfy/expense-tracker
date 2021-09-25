@@ -24,7 +24,7 @@ function Navbar() {
         payload: user,
       });
     });
-  }, []);
+  }, [dispatch]); //added dispatch in dependency.
 
   return (
     <>
@@ -37,7 +37,7 @@ function Navbar() {
         </Link>
         {user && (
           <div className="flex items-center">
-            {location.pathname == "/" && (
+            {location.pathname === "/" && (
               <Link
                 to="/dashboard"
                 className="font-semibold cursor-pointer text-lg mr-4"
