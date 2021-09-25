@@ -36,11 +36,21 @@ function Navbar() {
           XPENSE
         </Link>
         {user && (
-          <div
-            onClick={handleLogout}
-            className="font-semibold cursor-pointer text-lg"
-          >
-            Logout
+          <div className="flex items-center">
+            {location.pathname === "/" && (
+              <Link
+                to="/dashboard"
+                className="font-semibold cursor-pointer text-lg mr-4"
+              >
+                Dashboard
+              </Link>
+            )}
+            <div
+              onClick={handleLogout}
+              className="font-semibold cursor-pointer text-lg"
+            >
+              Logout
+            </div>
           </div>
         )}
         {!user && (
