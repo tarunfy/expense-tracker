@@ -5,7 +5,13 @@ export const signUpAction = (creds) => {
     auth
       .createUserWithEmailAndPassword(creds.email, creds.password)
       .then((res) => {
-        dispatch({ type: "SIGN_UP", res });
+        res.user.updateProfile({ displayName: creds.username });
+      })
+      .then(() => {
+        dispatch({
+          type: "SIGN_UP",
+          res: auth.currentUser,
+        });
       })
       .catch((err) => {
         dispatch({ type: "SIGN_UP_ERROR", err });
@@ -24,4 +30,8 @@ export const logInAction = (creds) => {
         dispatch({ type: "LOG_IN_ERROR", err });
       });
   };
+};
+
+export const logOutAction = () => {
+  return { type: "LOG_OUT" };
 };

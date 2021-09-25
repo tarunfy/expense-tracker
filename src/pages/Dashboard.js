@@ -4,6 +4,8 @@ import { Redirect } from "react-router-dom";
 function Dashboard() {
   const user = useSelector((state) => state.user);
   const isFetching = useSelector((state) => state.isFetching);
+  const state = useSelector((state) => state);
+  console.log(state);
 
   if (isFetching) return <h1>Loading...</h1>;
   if (user == null) return <Redirect to="/" />;

@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import hero from "../imgs/hero.svg";
 import { Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 function Home() {
+  const user = useSelector((state) => state.user);
   return (
     <>
       <svg
@@ -25,7 +26,7 @@ function Home() {
             Your personal expense manager designed to help
             <br /> you keep track of your day-to-day expense and income.
           </p>
-          <Link to="/signup" className="get-started-btn">
+          <Link to="/signup" className={user ? `hidden` : `get-started-btn`}>
             <div>Get Started</div>
           </Link>
         </div>

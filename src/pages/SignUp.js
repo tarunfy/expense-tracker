@@ -1,25 +1,25 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signUpAction } from "../actionCreators/authActions";
-import { useHistory } from "react-router";
+//import { useLocation } from "react-router";
 
-function SignUp() {
-  const history = useHistory();
+function SignUp({ history }) {
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const error = useSelector((state) => state.signUpError);
+  const user = useSelector((state) => state.user);
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(signUpAction({ email, password }));
+    dispatch(signUpAction({ email, password, username }));
     setEmail("");
     setUsername("");
     setPassword("");
-    if (!error) {
-      history.push("/dashboard");
-    }
   };
+
+  if (user) {
+    history.push("/dashboard");
+  }
 
   return (
     <div className="container flex flex-col justify-center h-hero  mx-auto items-center">

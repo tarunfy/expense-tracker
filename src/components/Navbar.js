@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { auth } from "../config/firebaseConfig";
 import { useHistory, useLocation } from "react-router";
 import { useDispatch } from "react-redux";
+import { logOutAction } from "../actionCreators/authActions";
 
 function Navbar() {
   const user = useSelector((state) => state.user);
@@ -12,13 +13,12 @@ function Navbar() {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    auth.signOut();
+    dispatch(logOutAction());
     history.push("/");
   };
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      console.log("Current user: ", user);
       dispatch({
         type: "SET_USER",
         payload: user,
@@ -37,7 +37,7 @@ function Navbar() {
         </Link>
         {user && (
           <div className="flex items-center">
-            {location.pathname === "/" && (
+            {location.pathname == "/" && (
               <Link
                 to="/dashboard"
                 className="font-semibold cursor-pointer text-lg mr-4"
