@@ -10,9 +10,15 @@
   box-sizing: border-box;
 }
 
+#root {
+  height: 100vh;
+}
+#dashboard {
+  height: 85vh;
+}
 #right {
   overflow-y: scroll;
-  height: 80vh;
+  height: 85vh;
 }
 #right::-webkit-scrollbar {
   width: 0 !important;

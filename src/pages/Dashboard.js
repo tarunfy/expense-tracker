@@ -11,7 +11,10 @@ function Dashboard() {
   if (user == null) return <Redirect to="/" />;
 
   return (
-    <div className="container  my-10 px-6 max-h-screen  max-w-full  grid grid-cols-3">
+    <div
+      id="dashboard"
+      className="container xl:mb-5 2xl:my-8 px-6 max-h-full  max-w-full  grid grid-cols-3"
+    >
       <div
         id="left"
         className="container flex w-full flex-col justify-between items-center"
