@@ -9,10 +9,10 @@ import Home from "./pages/Home";
 import LogIn from "./pages/LogIn";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
-import { authReducer } from "./reducers/authReducer";
+import rootReducer from "./reducers/rootReducer";
 import thunk from "redux-thunk";
 
-const store = createStore(authReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <React.StrictMode>

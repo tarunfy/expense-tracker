@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { logOutAction } from "../actionCreators/authActions";
 
 function Navbar() {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.auth.user);
   const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();

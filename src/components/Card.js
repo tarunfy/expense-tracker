@@ -1,25 +1,40 @@
+import moment from "moment";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { deleteCardAction } from "../actionCreators/databaseActions";
 
-function Card() {
+function Card({ id, amount, expenseName, date }) {
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    dispatch(deleteCardAction(id));
+  };
   return (
     <div
       id="card"
       className="flex border-b-2 border-gray-100 w-full mb-2 justify-between items-center py-3 px-4 font-Nunito"
     >
       <div className="flex flex-col justify-evenly items-start">
-        <h1 className="font-semibold text-lg">Motherboard Purchase</h1>
-        <p className="font-semibold text-base text-gray-400">21, sep 4:00pm</p>
+        <h1 className="font-semibold text-lg">{expenseName}</h1>
+        <p className="font-semibold text-base text-gray-400">
+          {moment(date.toDate()).calendar()}
+        </p>
       </div>
       <div className="flex justify-between items-center">
-        <h1 className="font-Nunito font-medium text-lg text-green-500">
-          ₹3000
+        <h1
+          className={`font-Nunito font-medium text-lg ${
+            amount[0] === "-" ? `text-red-500` : `text-green-500`
+          }`}
+        >
+          {`₹${amount}`}
         </h1>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 ml-3"
+          className="h-6 w-6 ml-3 cursor-pointer"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
+          onClick={handleDelete}
         >
           <path
             strokeLinecap="round"

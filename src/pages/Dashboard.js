@@ -1,14 +1,38 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
+import {
+  storeDataAction,
+  getDataAction,
+} from "../actionCreators/databaseActions";
 import Card from "../components/Card";
 
 function Dashboard() {
-  const user = useSelector((state) => state.user);
-  const isFetching = useSelector((state) => state.isFetching);
+  const user = useSelector((state) => state.auth.user);
+  const isFetching = useSelector((state) => state.auth.isFetching);
+  const dispatch = useDispatch();
+  const docs = useSelector((state) => state.database.docs);
+
+  useEffect(() => {
+    if (user) {
+      dispatch(getDataAction(user.uid));
+    } else {
+      console.log("rip");
+    }
+  }, [user]);
+
+  const [name, setName] = useState("");
+  const [amount, setAmount] = useState("");
 
   if (isFetching) return <h1>Loading...</h1>;
   if (user == null) return <Redirect to="/" />;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(storeDataAction({ userId: user.uid, name, amount }));
+    setName("");
+    setAmount("");
+  };
 
   return (
     <div
@@ -23,14 +47,17 @@ function Dashboard() {
           id="info"
           className="container bg-white p-10 w-3/4 border rounded-md shadow-md mb-8 font-Nunito flex flex-col"
         >
-          <div className="flex justify-between w-full items-center mb-10 ">
-            <div className="flex flex-col justify-center items-center">
+          <div
+            id="top-info"
+            className="flex justify-between  max-w-full items-center mb-10 "
+          >
+            <div className="flex flex-col justify-center items-center ">
               <h1 className="font-semibold text-2xl uppercase">Income</h1>
-              <p className="text-green-500 font-medium">₹5000</p>
+              <p className="text-green-500 font-medium">₹1000</p>
             </div>
-            <div className="flex flex-col justify-center items-center">
+            <div className="flex flex-col justify-center items-center ">
               <h1 className="font-semibold text-2xl uppercase">Expense</h1>
-              <p className="text-red-500 font-medium">₹4000</p>
+              <p className="text-red-500 font-medium">₹2000</p>
             </div>
           </div>
           <div>
@@ -44,7 +71,7 @@ function Dashboard() {
           id="add-transaction"
           className="w-3/4 bg-white p-8 rounded-md border-0 shadow-md"
         >
-          <form className="mb-0 space-y-6">
+          <form className="mb-0 space-y-6" onSubmit={handleSubmit}>
             <div>
               <h1 className="font-Nunito font-semibold text-xl mb-3">
                 New Transaction
@@ -58,6 +85,8 @@ function Dashboard() {
                 </label>
                 <div className="mt-1">
                   <input
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     type="text"
                     id="name"
                     autoComplete="off"
@@ -74,6 +103,8 @@ function Dashboard() {
               </label>
               <div className="mt-1">
                 <input
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
                   type="text"
                   id="amount"
                   required
@@ -98,24 +129,18 @@ function Dashboard() {
       >
         <div>
           <h1 className="font-Roboto font-bold text-3xl mb-2">History</h1>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {docs &&
+            docs.map((doc) => {
+              return (
+                <Card
+                  key={doc.id}
+                  id={doc.id}
+                  expenseName={doc.expenseName}
+                  amount={doc.amount}
+                  date={doc.date}
+                />
+              );
+            })}
         </div>
       </div>
     </div>

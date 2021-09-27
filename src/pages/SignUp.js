@@ -7,7 +7,7 @@ function SignUp({ history }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.auth.user);
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signUpAction({ email, password, username }));

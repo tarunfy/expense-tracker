@@ -7,8 +7,8 @@ function Login() {
   const [email, setEmail] = useState("tarunsharma8920@gmail.com");
   const [password, setPassword] = useState("passwor0.");
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
-  const isFetching = useSelector((state) => state.isFetching);
+  const user = useSelector((state) => state.auth.user);
+  const isFetching = useSelector((state) => state.auth.isFetching);
 
   const handleSubmit = (e) => {
     e.preventDefault();
