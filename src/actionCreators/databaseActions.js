@@ -26,7 +26,7 @@ export const getDataAction = (userId) => {
       .collection("users")
       .doc(userId)
       .collection("expenses")
-      .orderBy("date")
+      .orderBy("date", "desc")
       .onSnapshot((res) => {
         const data = res.docs.map((d) => ({ id: d.id, ...d.data() }));
         dispatch({ type: "GOT_DATA", data });

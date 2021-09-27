@@ -12,7 +12,10 @@ function Dashboard() {
   const isFetching = useSelector((state) => state.auth.isFetching);
   const dispatch = useDispatch();
   const docs = useSelector((state) => state.database.docs);
-
+  console.log(docs);
+  const [income, setIncome] = useState(0);
+  const [expense, setExpense] = useState(0);
+  const [total, setTotal] = useState(0);
   useEffect(() => {
     if (user) {
       dispatch(getDataAction(user.uid));
@@ -20,6 +23,23 @@ function Dashboard() {
       console.log("rip");
     }
   }, [user]);
+
+  useEffect(() => {
+    setExpense(0);
+    setIncome(0);
+    if (docs) {
+      const amounts = docs.map((doc) => parseInt(doc.amount));
+      setTotal(amounts.reduce((acc, item) => (acc += item), 0).toFixed(2));
+      setIncome(
+        amounts.filter((item) => item > 0).reduce((acc, item) => acc + item, 0)
+      );
+      setExpense(
+        amounts
+          .filter((item) => item < 0)
+          .reduce((acc, item) => acc + item, 0) * -(1).toFixed(2)
+      );
+    }
+  }, [docs]);
 
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
@@ -53,16 +73,16 @@ function Dashboard() {
           >
             <div className="flex flex-col justify-center items-center ">
               <h1 className="font-semibold text-2xl uppercase">Income</h1>
-              <p className="text-green-500 font-medium">₹1000</p>
+              <p className="text-green-500 font-medium">{`₹${income}`}</p>
             </div>
             <div className="flex flex-col justify-center items-center ">
               <h1 className="font-semibold text-2xl uppercase">Expense</h1>
-              <p className="text-red-500 font-medium">₹2000</p>
+              <p className="text-red-500 font-medium">{`₹${expense}`}</p>
             </div>
           </div>
           <div>
             <h2 className="text-2xl font-semibold">
-              10000 <sup className="text-gray-400">INR</sup>{" "}
+              {total} <sup className="text-gray-400">INR</sup>{" "}
             </h2>
             <p className="text-gray-400">Total Balance</p>
           </div>
@@ -107,6 +127,7 @@ function Dashboard() {
                   onChange={(e) => setAmount(e.target.value)}
                   type="text"
                   id="amount"
+                  autoComplete="off"
                   required
                   className="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-600 focus:ring-1"
                 />
@@ -138,6 +159,8 @@ function Dashboard() {
                   expenseName={doc.expenseName}
                   amount={doc.amount}
                   date={doc.date}
+                  setExpense={setExpense}
+                  setIncome={setIncome}
                 />
               );
             })}
