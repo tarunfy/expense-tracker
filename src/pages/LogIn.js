@@ -4,8 +4,8 @@ import { logInAction } from "../actionCreators/authActions";
 import { Redirect } from "react-router";
 
 function Login() {
-  const [email, setEmail] = useState("tarunsharma8920@gmail.com");
-  const [password, setPassword] = useState("passwor0.");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const isFetching = useSelector((state) => state.auth.isFetching);
@@ -46,6 +46,7 @@ function Login() {
                   onChange={(e) => setEmail(e.target.value)}
                   type="email"
                   id="email"
+                  autoComplete="off"
                   required
                   className="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-600 focus:ring-1"
                 />
@@ -62,6 +63,7 @@ function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
+                autoComplete="off"
                 id="password"
                 required
                 className="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-600 focus:ring-1"

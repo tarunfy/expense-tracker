@@ -31,7 +31,9 @@ body::-webkit-scrollbar {
 .get-started-btn {
   @apply mt-10 flex justify-center w-36 border-0 rounded-lg bg-primary font-bold text-white px-4 py-3 transition-shadow duration-300 ease-in hover:shadow-primary;
 }
-
+.nav-btn {
+  @apply flex justify-center  border-0 rounded-md bg-primary font-bold text-white px-4 py-2;
+}
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,

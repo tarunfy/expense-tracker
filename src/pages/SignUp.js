@@ -40,6 +40,7 @@ function SignUp({ history }) {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   type="text"
+                  autoComplete="off"
                   id="username"
                   required
                   className="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-600 focus:ring-1"
@@ -58,6 +59,7 @@ function SignUp({ history }) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   type="email"
+                  autoComplete="off"
                   id="email"
                   required
                   className="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:border-indigo-600 focus:ring-1"

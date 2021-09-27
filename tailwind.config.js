@@ -22,7 +22,7 @@ module.exports = {
       backgroundColor: (theme) => ({
         ...theme("colors"),
         primary: "#5928E5",
-        dashboard: "",
+        secondary: "#00CDFF",
       }),
       boxShadow: {
         primary: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
