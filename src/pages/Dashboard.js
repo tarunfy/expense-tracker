@@ -12,7 +12,6 @@ function Dashboard() {
   const isFetching = useSelector((state) => state.auth.isFetching);
   const dispatch = useDispatch();
   const docs = useSelector((state) => state.database.docs);
-  console.log(docs);
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
   const [total, setTotal] = useState(0);
