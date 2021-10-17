@@ -6,6 +6,7 @@ module.exports = {
       fontFamily: {
         Roboto: ["Roboto"],
         Nunito: ["Nunito"],
+        Montserrat: ["Montserrat"],
       },
       height: {
         hero: "600px",
@@ -16,16 +17,22 @@ module.exports = {
       },
       textColor: {
         primary: "#5928E5",
-        secondary: "#00CDFF",
+        secondary: "#85f396",
         tertiary: "#0099FF",
       },
       backgroundColor: (theme) => ({
         ...theme("colors"),
         primary: "#5928E5",
-        secondary: "#00CDFF",
+        secondary: "#85f396",
       }),
       boxShadow: {
         primary: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+      },
+      screens: {
+        mobile: "350px",
+      },
+      inset: {
+        "8/5": "80%",
       },
     },
   },
