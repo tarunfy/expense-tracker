@@ -32,11 +32,11 @@ function Navbar() {
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
         transition={{ delay: 0.1, duration: 0.7 }}
-        className="py-5 px-10 flex justify-between items-center z-10"
+        className="py-5 lg:px-10 px-3 flex justify-between items-center z-10"
       >
         <Link
           to="/"
-          className=" uppercase font-extrabold text-3xl tracking-widest"
+          className=" uppercase font-extrabold lg:text-4xl text-3xl tracking-widest font-Montserrat"
         >
           XPENSE
         </Link>
@@ -57,7 +57,7 @@ function Navbar() {
             to={location.pathname.includes("login") ? "/signup" : "/login"}
             className="nav-btn"
           >
-            {location.pathname.includes("login") ? "Sign Up" : "Login"}
+            {location.pathname.includes("login") ? "Signup" : "Login"}
           </Link>
         )}
       </motion.nav>

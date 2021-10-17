@@ -6,6 +6,8 @@ import {
   getDataAction,
 } from "../actionCreators/databaseActions";
 import Card from "../components/Card";
+import { motion } from "framer-motion";
+import bars from "../imgs/bars.svg";
 
 function Dashboard() {
   const user = useSelector((state) => state.auth.user);
@@ -43,7 +45,14 @@ function Dashboard() {
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
 
-  if (isFetching) return <h1>Loading...</h1>;
+  if (isFetching)
+    return (
+      <img
+        className="h-20 w-20 absolute top-1/2 left-1/2"
+        src={bars}
+        alt="loader"
+      />
+    );
   if (user == null) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
@@ -54,17 +63,23 @@ function Dashboard() {
   };
 
   return (
-    <div
+    <motion.div
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      transition={{ duration: 1 }}
       id="dashboard"
-      className="container xl:mb-5 2xl:my-8 px-6 max-h-full  max-w-full  grid grid-cols-3"
+      className="container xl:mb-5 2xl:my-8 lg:px-6 max-h-full  max-w-full grid lg:grid-cols-3  overflow-y-auto lg:overflow-hidden"
     >
       <div
         id="left"
-        className="container flex w-full flex-col justify-between items-center"
+        className="container flex mx-auto w-full flex-col justify-between items-center"
       >
-        <div
+        <motion.div
+          animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          transition={{ duration: 0.7, type: "tween" }}
           id="info"
-          className="container bg-white p-10 w-3/4 border rounded-md shadow-md mb-8 font-Nunito flex flex-col"
+          className="container bg-white p-10 lg:w-3/4 w-full border rounded-md shadow-md mb-8 font-Nunito flex flex-col"
         >
           <div
             id="top-info"
@@ -85,10 +100,13 @@ function Dashboard() {
             </h2>
             <p className="text-gray-400">Total Balance</p>
           </div>
-        </div>
-        <div
+        </motion.div>
+        <motion.div
+          animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          transition={{ duration: 0.7, type: "tween" }}
           id="add-transaction"
-          className="w-3/4 bg-white p-8 rounded-md border-0 shadow-md"
+          className="lg:w-3/4 w-full lg:mb-0 mb-8 bg-white p-8 rounded-md border-0 shadow-md"
         >
           <form className="mb-0 space-y-6" onSubmit={handleSubmit}>
             <div>
@@ -141,14 +159,17 @@ function Dashboard() {
               </button>
             </div>
           </form>
-        </div>
+        </motion.div>
       </div>
-      <div
+      <motion.div
+        animate={{ opacity: 1 }}
+        initial={{ opacity: 0 }}
+        transition={{ duration: 0.7, type: "tween" }}
         id="right"
-        className="col-span-2 container bg-white flex flex-col justify-start py-10  px-10 shadow-md  items-stretch w-full"
+        className="lg:col-span-2 container bg-white flex flex-col justify-start lg:py-10 lg:px-10 px-3 py-4 shadow-md mx-auto items-stretch w-full"
       >
         <div>
-          <h1 className="font-Roboto font-bold text-3xl mb-2">History</h1>
+          <h1 className="font-Nunito font-bold text-3xl mb-2">History 👀</h1>
           {docs &&
             docs.map((doc) => {
               return (
@@ -164,8 +185,8 @@ function Dashboard() {
               );
             })}
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

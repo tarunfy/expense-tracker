@@ -2,6 +2,7 @@ import moment from "moment";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteCardAction } from "../actionCreators/databaseActions";
+import { motion } from "framer-motion";
 
 function Card({ id, amount, expenseName, date }) {
   const dispatch = useDispatch();
@@ -10,9 +11,12 @@ function Card({ id, amount, expenseName, date }) {
     dispatch(deleteCardAction(id));
   };
   return (
-    <div
+    <motion.div
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      transition={{ duration: 0.4, type: "tween", delay: 0.2 }}
       id="card"
-      className="flex border-b-2 border-gray-100 w-full mb-2 justify-between items-center py-3 px-4 font-Nunito"
+      className="flex border-b-2 border-purple-400 w-full mb-2 justify-between items-center py-3 px-4 font-Nunito"
     >
       <div className="flex flex-col justify-evenly items-start">
         <h1 className="font-semibold text-lg">{expenseName}</h1>
@@ -44,7 +48,7 @@ function Card({ id, amount, expenseName, date }) {
           />
         </svg>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
