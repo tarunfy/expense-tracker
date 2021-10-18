@@ -68,11 +68,11 @@ function Dashboard() {
       initial={{ opacity: 0 }}
       transition={{ duration: 1 }}
       id="dashboard"
-      className="container xl:mb-5 2xl:my-8 lg:px-6 max-h-full  max-w-full grid lg:grid-cols-3  overflow-y-auto lg:overflow-hidden"
+      className="container lg:px-6   max-w-full grid lg:grid-cols-3  overflow-y-auto lg:overflow-hidden"
     >
       <div
         id="left"
-        className="container flex mx-auto w-full flex-col justify-between items-center"
+        className="container flex lg:py-5 mx-auto w-full flex-col justify-between items-center"
       >
         <motion.div
           animate={{ opacity: 1 }}
@@ -136,7 +136,8 @@ function Dashboard() {
                 htmlFor="amount"
                 className="block text-sm font-medium text-gray-700"
               >
-                Amount
+                Amount (use "<span className="font-bold text-black">-</span>"
+                for expenses)
               </label>
               <div className="mt-1">
                 <input
@@ -166,7 +167,7 @@ function Dashboard() {
         initial={{ opacity: 0 }}
         transition={{ duration: 0.7, type: "tween" }}
         id="right"
-        className="lg:col-span-2 container bg-white flex flex-col justify-start lg:py-10 lg:px-10 px-3 py-4 shadow-md mx-auto items-stretch w-full"
+        className="lg:col-span-2 container bg-white flex flex-col justify-start lg:py-5 lg:px-10 px-3 py-5  shadow-md mx-auto items-stretch w-full rounded-md"
       >
         <div>
           <h1 className="font-Nunito font-bold text-3xl mb-2">History 👀</h1>
