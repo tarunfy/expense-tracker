@@ -1,0 +1,50 @@
+{
+    "common_elements":{
+        "site_url":"http://localhost:3000/",
+        "get_started_button":"div#root > div:nth-Child(2) > div > div:nth-Child(2) > a",
+        "navigation_menu_button":"div#root > div > nav > a:nth-Child(2)",
+        "logout_button":"div#root > div > nav > div > div"
+     },
+
+    "common_data":{
+        "label_sign_up":"Signup",
+        "label_login":"Login",
+        "label_logout":"Logout"
+    },
+
+    "sign_up_elements":{
+      "sign_up_submit":"div#root  > div:nth-Child(4) > div > div > form > div:nth-Child(2)  > button",
+      "user_name_field":"div.container > div > form > div:nth-Child(1) > div:nth-Child(1) > div > input",
+      "email_field":"div.container > div > form > div:nth-Child(1) > div:nth-Child(2) > div > input",
+      "password_field":"div.container > div > form > div:nth-Child(1) > div:nth-Child(4) > input"
+    },
+
+    "sign_up_data":{
+      "label_username":"Test05",
+      "label_email":"test05@mail.com",
+      "label_password":"test@05"
+    },
+
+    "login_elements":{
+      "login_form":"div.container > div > form",
+      "email_field":"div.container > div > form> div:nth-Child(1) > div:nth-Child(1) > div > input",
+      "password_field":"div.container > div > form> div:nth-Child(1) > div:nth-Child(3) > input",
+      "login_submit":"div.container > div > form> div:nth-Child(2) > button"
+    },
+
+    "login_data":{
+ 
+    },
+
+    "dashboard_elements":{
+      
+    },
+
+    "dashboard_data":{
+
+    }
+
+
+
+
+}

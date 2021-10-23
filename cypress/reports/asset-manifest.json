@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "URL_PLACEHOLDER /static/css/main.3941a355.chunk.css",
+    "main.js": "URL_PLACEHOLDER /static/js/main.0a501b9d.chunk.js",
+    "main.js.map": "URL_PLACEHOLDER /static/js/main.0a501b9d.chunk.js.map",
+    "runtime-main.js": "URL_PLACEHOLDER /static/js/runtime-main.f270c246.js",
+    "runtime-main.js.map": "URL_PLACEHOLDER /static/js/runtime-main.f270c246.js.map",
+    "static/css/2.7ba7e433.chunk.css": "URL_PLACEHOLDER /static/css/2.7ba7e433.chunk.css",
+    "static/js/2.c52d051d.chunk.js": "URL_PLACEHOLDER /static/js/2.c52d051d.chunk.js",
+    "static/js/2.c52d051d.chunk.js.map": "URL_PLACEHOLDER /static/js/2.c52d051d.chunk.js.map",
+    "index.html": "URL_PLACEHOLDER /index.html",
+    "precache-manifest.fdb04e0d7937763fc3f268ac0ec951f9.js": "URL_PLACEHOLDER /precache-manifest.fdb04e0d7937763fc3f268ac0ec951f9.js",
+    "service-worker.js": "URL_PLACEHOLDER /service-worker.js",
+    "static/css/2.7ba7e433.chunk.css.map": "URL_PLACEHOLDER /static/css/2.7ba7e433.chunk.css.map",
+    "static/css/main.3941a355.chunk.css.map": "URL_PLACEHOLDER /static/css/main.3941a355.chunk.css.map",
+    "static/js/2.c52d051d.chunk.js.LICENSE.txt": "URL_PLACEHOLDER /static/js/2.c52d051d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f270c246.js",
+    "static/css/2.7ba7e433.chunk.css",
+    "static/js/2.c52d051d.chunk.js",
+    "static/css/main.3941a355.chunk.css",
+    "static/js/main.0a501b9d.chunk.js"
+  ]
+}

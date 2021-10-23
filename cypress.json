@@ -1,0 +1,10 @@
+{
+
+    "testFiles": "**/*.feature",
+    "reporter": "cypress-dashboard",
+    "reporterOptions": {
+    "reportDir": "cypress/reports",
+    "isLocalDeployment": true
+  }
+    
+}
