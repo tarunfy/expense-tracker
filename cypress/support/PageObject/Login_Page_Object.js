@@ -23,8 +23,4 @@ export default class LoginPageObject{
     return cy.get(user.login_elements.login_submit,{timeout:10000});
   }
 
-  getNavigationMenuButton(){
-    return cy.get(user.common_elements.navigation_menu_button,{timeout:10000});
-  }
-
 }

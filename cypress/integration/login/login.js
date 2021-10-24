@@ -48,8 +48,8 @@ When("user click on login submit",async()=>{
 })
 
 Then("dashboard should not be visible",async()=>{
-    await login.getNavigationMenuButton().should('be.visible');
-    await login.getNavigationMenuButton().then((buttonValue)=>{
+    await common.getNavigationMenuButton().should('be.visible');
+    await common.getNavigationMenuButton().then((buttonValue)=>{
        var navBarButtonVal = buttonValue.text().toString().trim();
         if(navBarButtonVal.includes(user.common_data.label_sign_up)){
             expect(true).to.be.true;
@@ -58,11 +58,11 @@ Then("dashboard should not be visible",async()=>{
 })
 
 Then("click on signup button",async()=>{
-    await login.getNavigationMenuButton().should('be.visible');
-    await login.getNavigationMenuButton().then(async(buttonValue)=>{
+    await common.getNavigationMenuButton().should('be.visible');
+    await common.getNavigationMenuButton().then(async(buttonValue)=>{
         var navBarButtonVal = buttonValue.text().toString().trim();
         if(navBarButtonVal.includes(user.common_data.label_sign_up)){
-           await login.getNavigationMenuButton().click({force:true});
+           await common.getNavigationMenuButton().click({force:true});
         }
     })
 })
