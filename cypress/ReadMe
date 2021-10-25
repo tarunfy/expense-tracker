@@ -1,0 +1,5 @@
+To Run The e2e Test
+1. Open Terminal at project directory level
+2. install the dependency by giving following command as (npm i)
+3. give following another command into terminal as npx cypress Run, it will start execution in headless mode
+4. second way is in terminal type commond as npx cypress open -> it will open cypress execution terminal -> click on feature file -> it will start execution
