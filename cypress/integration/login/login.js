@@ -19,11 +19,11 @@ Given("user navigate to site url",async()=>{
 })
 
 When("click on login navigation menu button",async()=>{
-    await login.getNavigationMenuButton().should('be.visible');
-    await login.getNavigationMenuButton().then(async(buttonValue)=>{
+    await common.getNavigationMenuButton().should('be.visible');
+    await common.getNavigationMenuButton().then(async(buttonValue)=>{
         var navBarButtonVal = buttonValue.text().toString().trim();
         if(navBarButtonVal.includes(user.common_data.label_login)){
-           await login.getNavigationMenuButton().click({force:true});
+           await common.getNavigationMenuButton().click({force:true});
         }
     })
 })
