@@ -12,6 +12,10 @@ export default class DashboardPageObject{
         return cy.get(user.dashboard_elements.income_value_field,{timeout:10000});
     }
 
+    getExpenseFieldValue(){
+        return cy.get(user.dashboard_elements.expense_value_field,{timeout:10000});
+    }
+
     getTransactionNameField(){
         return cy.get(user.dashboard_elements.transaction_name_field,{timeout:10000});
     }
@@ -26,5 +30,9 @@ export default class DashboardPageObject{
     
     getTransactionList(){
         return cy.get(user.dashboard_elements.transaction_list,{timeout:10000});
+    }
+
+    getTotalValue(){
+        return cy.get(user.dashboard_elements.total_balance_field,{timeout:10000});
     }
 }

@@ -8,6 +8,16 @@ var user = require('../../fixtures/user.json');
 const signUp = new SignUpPageObject();
 const common = new CommonPageObject();
 
+function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}
+
 Given("user navigate to site url",async()=>{
     await common.navigateToUrl();
 })
@@ -28,12 +38,12 @@ Then("user enter valid username",async()=>{
 
 Then("user enter valid email address",async()=>{
     await signUp.getEmailField().should('be.visible');
-    await signUp.getEmailField().type(user.sign_up_data.label_email);
+    await signUp.getEmailField().type(makeid(2)+"@gmail.com");
 })
 
 Then("user enter valid password",async()=>{
     await signUp.getPasswordField().should('be.visible');
-    await signUp.getPasswordField().type(user.sign_up_data.label_password);
+    await signUp.getPasswordField().type(makeid(2)+"@123");
 })
 
 When("user click sign up button",async()=>{
@@ -46,7 +56,7 @@ Then("dashboard is been displayed to user with valid registration",async()=>{
    await signUp.getUserRegisteredVerify().then(async(buttonValue)=>{
        var navBarButtonVal = buttonValue.text().toString().trim();
         if(navBarButtonVal.includes(user.common_data.label_logout)){
-            await signUp.getUserRegisteredVerify().click({force:true});
+            await common.getLogOutButton().click({force:true});
         }
    })
 })
