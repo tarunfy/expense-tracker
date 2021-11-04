@@ -40,6 +40,7 @@
     "dashboard_elements":{
       "income_value_field":"div#dashboard > div:nth-Child(1) > div:nth-Child(1) > div:nth-Child(1) > div:nth-Child(1) > p",
       "expense_value_field":"div#dashboard > div:nth-Child(1) > div:nth-Child(1) > div:nth-Child(1) > div:nth-Child(2) > p",
+      "total_balance_field":"div#dashboard > div:nth-Child(1) > div:nth-Child(1) > div:nth-Child(2) > h2",
       "transaction_name_field":"div#dashboard > div:nth-Child(1) > div:nth-Child(2) > form > div:nth-Child(1)> div:nth-Child(2) > div > input",
       "transaction_amount_field":"div#dashboard > div:nth-Child(1) > div:nth-Child(2) > form > div:nth-Child(1) > div:nth-Child(4) > input",
       "transaction_add_button":"div#dashboard > div:nth-Child(1) > div:nth-Child(2) > form > div:nth-Child(2) > button",
@@ -48,7 +49,9 @@
 
     "dashboard_data":{
       "label_transaction_name":"Salary",
-      "label_transaction_income_amount":"30000"
+      "label_transaction_income_amount":"30000",
+      "label_expense_name":"Electricty bill",
+      "label_expense_amount":"2000"
     }
 
 

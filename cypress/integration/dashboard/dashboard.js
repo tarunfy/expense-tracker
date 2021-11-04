@@ -13,6 +13,8 @@ const login = new LoginPageObject();
 const dashboard = new DashboardPageObject();
 
 var incomeValue=0;
+var totalAmount=0;
+var expenseValue=0;
 
 Given("user navigate to site url",async()=>{
    await common.navigateToUrl();
@@ -60,6 +62,15 @@ Then("verify new income is been added",async()=>{
                     expect(true).to.be.true;
                 }
             })
+
+            await dashboard.getTotalValue().then(async(totalVal)=>{
+                totalAmount = parseInt(totalVal.text().toString().replace("INR").replace("\n").replace("\r").trim());
+                if(totalAmount === 30000){
+                    expect(true).to.be.true;
+                    console.log(totalAmount);
+                }
+            })
+
         }
         else{
             await dashboard.getTransactionList().then(async(transactionListValue)=>{
@@ -88,8 +99,47 @@ Then("verify new income is been added",async()=>{
                         expect(true).to.be.true;
                     }  
                 })
+
+                await dashboard.getTotalValue().then(async(totalAmountVal)=>{
+                    totalAmount = parseInt(totalAmountVal.text().toString().replace("INR").replace("\n").replace("\r").trim());
+                    if(totalAmount === 0){
+                        expect(true).to.be.true;
+                    } 
+                })
             }
        })
+   })
+
+   Then("verify expense is been deducted from income and total amount",async()=>{
+        await dashboard.getTransactionList().then(async(TransactionListVal)=>{
+            var transactionValue = TransactionListVal.text().toString().trim();
+            if(transactionValue.includes(user.dashboard_data.label_transaction_name)){
+               await dashboard.getTransactionNameField().type(user.dashboard_data.label_expense_name);
+               await dashboard.getTransactionAmountField().type("-"+user.dashboard_data.label_expense_amount);
+               await dashboard.getTransactionAddButton().click({force:true});
+               await cy.wait(5000);
+               await dashboard.getExpenseFieldValue().then((expenseFielVal)=>{
+                 expenseValue =  parseInt(expenseFielVal.text().toString().replace("₹","").trim());
+                  if(expenseValue === 2000){
+                      expect(true).to.be.true;
+                  }
+               })
+
+               await dashboard.getTotalValue().then((totalAmountVal)=>{
+                   totalAmount = parseInt(totalAmountVal.text().toString().replace("INR").replace("\n").replace("\r").trim());
+                   if(totalAmount === 28000){
+                       expect(true).to.be.true;
+                   }
+               })
+               await cy.wait(5000);
+               await dashboard.getTransactionList().then(async(transactionNameValue)=>{
+                   var transactionNameList = transactionNameValue.text().toString().trim();
+                   if(transactionNameList.includes(user.dashboard_data.label_transaction_name) && transactionNameList.includes(user.dashboard_data.label_expense_name)){
+                       await cy.get("div#dashboard > div:nth-Child(2) > div > div > div:nth-Child(2) > svg").click({multiple:true});
+                   }
+               })
+            }
+        })
    })
 
    Then("click on logout",async()=>{
